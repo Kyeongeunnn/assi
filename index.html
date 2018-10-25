@@ -1,61 +1,107 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
+
+<head>
+
     <meta charset="utf-8">
+
     <title>Hello, WebVR! • A-Frame</title>
+
     <meta name="description" content="Hello, WebVR! • A-Frame">
+
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-  </head>
-  <body>
+
+</head>
+
+<body>
+
+
+
     <script>
-      var numberOfClicks=0;
-      
-      function alretUser(el){
-        // alert("Hello")
-        numberOfClicks++;
-        // console.log("Hello!! Number of clicks: "+numberOfClicks+".");
-        console.log("I clicked a"+el.tagName+".");
-         el.setAttribute('color', 'hotpink');     
-      }
-      
-      
-     /*function makeInvisible(){
-           el.setAttribute('visible', 'false');
-          var myShape=document.getElementById('disappear');
-          myShape.setAttribute('visible' , 'false');
-      }*/
-      
-        function invisibleCylinder(){
+        var numberOfClicks = 0;
 
-        var myShape= document.getElementById("disappear");
+        function alerUser(el) {
 
-        myShape.setAttribute('visible', 'false');
-     
+            numberOfClicks++;
+
+            //console.log("HELLO . Number of Clicks:  "+numberOfClicks+".");
+
+            console.log("I CLICKED A " + el.tagName + " . ");
+
+            el.setAttribute('color', 'white');
+
+        }
+
+        function makeInvisible(el) {
+
+            el.setAttribute('visible', 'false');
+        }
+
+
+        function invisibleCylinder() {
+
+            var myShape = document.getElementById("disappear");
+
+            myShape.setAttribute('visible', 'false');
+        }
+
+         function invisibleObject(myId) {
+
+            var myShape = document.getElementById(myId);
+
+            myShape.setAttribute('visible', 'false');
+        }
+
+        var posY=0;
+        
+        function changePosition(myId) {
+
+            var myShape = document.getElementById(myId);
+
+            myShape.setAttribute('position', {x:0, y:posY, z:-3});
+            posY++;
+        }
+
     </script>
-    
-    
-    
-    
-    <a-scene background="color: lightpink">
-      
-      <a-entity position="0 0 1">
-       	<a-camera wasd-control look-controls>
-                 <a-cursor color="yellow"></a-cursor>
-       	</a-camera>
-       </a-entity>
-    
-      <a-text value="Hello, World!"></a-text>
-      
-      
-      <a-box onclick="makeInvisible(this);" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow>
-        <a-box id="child" visible="true" position="0 0 0" rotation="0 45 0" color="tomato" shadow></a-box>
-      </a-box>
-      <a-sphere onclick="alerUser(this); makeInvisible();" position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
-      <a-cylinder id="disappear"; onclick="alerUser(this);" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
-      <a-plane onclick="alerUser(this); invisibleCylider();" position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
-     
-      <a-text value="Hello.world" position="-0.5 1.5 -3"></a-text>
-      
+
+
+
+
+
+
+
+    <a-scene background="color=lightpink">
+
+        <a-entity position="0 0 1">
+
+            <a-camera wasd-controls look-controls>
+
+                <a-cursor color="yellow"></a-cursor>
+
+            </a-camera>
+
+        </a-entity>
+
+
+        <a-box visible="true" onclick="" id="parentBox" position="-3 2 -3" rotation="30 45 0" color="#4CC3D9" shadow>
+
+            <a-box id="childBox" visible="true" position="0 0 0" rotation="0 45 0" color="tomato" shadow></a-box>
+
+        </a-box>
+
+        <a-sphere id="obj1" visible="true" onclick="" position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+
+        <a-cylinder id="obj2" onclick="" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+
+        <a-plane id="obj3" onclick="" position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+
+        <a-tours></a-tours>
+
+        <a-text geometry="primitive:plane"; onclick="changePosition('obj2');" value="HELLO" position="-1 1 -1" color="pink"></a-text>
+
     </a-scene>
-  </body>
+
+</body>
+
 </html>
